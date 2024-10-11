@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
-  
+  before_action :failed_login_handler, only: %i[ create ]
+
   respond_to :json
 
   private 
@@ -15,16 +16,12 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    if current_user
-      render json: {
-        status: 200,
-        message: "logged out successfully"
-      }, status: :ok
-    else
-      render json: {
-        status: 401,
-        message: "Couldn't find an active session."
-      }, status: :unauthorized
+    render json: { message: "OK" }, status: :ok
+  end
+
+  def failed_login_handler
+    if current_user.blank?
+      render json: { message: "Error", data: "Invalid Email or Password" }, status: :unauthorized
     end
   end
 
