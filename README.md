@@ -1,1 +1,1 @@
-# Devise JWT, CRUD, and Can Can Can Authorizations
+# Devise JWT and Can Can Can Authorizations
