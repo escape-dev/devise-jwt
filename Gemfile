@@ -15,6 +15,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 gem "rack-cors"
+gem 'rack-attack'
 
 gem 'devise'
 gem 'devise-jwt'
