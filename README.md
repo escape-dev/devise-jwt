@@ -1,1 +1,1 @@
-# Devise JWT and Can Can Can Authorizations
+# Devise JWT, Rate Limiter, Kaminari Pagination and Can Can Can Authorizations
