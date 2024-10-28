@@ -3,35 +3,37 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[ show update destroy ]
 
   def index 
-    render json: { message: "Success", data: Book.all }, status: :ok
+    @books = Book.page(params[:page].to_i)
+
+    paginate_response @books, "Success", :ok
   end
 
   def create 
     @book = Book.new(book_params)
 
     if @book.save!
-      render json: { message: "Success" }, status: :created
+      default_response nil, "Success", :ok
     else
-      render json: { message: "Error", data: @book.errors.full_messages }, status: :unprocessable_entity
+      default_response @book.errors, "Error", :unprocessable_entity
     end
   end
 
   def show 
-    render json: { message: "Success", data: @book }, status: :ok
+    default_response @book, "Success", :ok
   end
   
   def update 
     if @book.update(book_params)
-      render json: { message: "Success" }, status: :ok
+      default_response nil, "Success", :ok
     else
-      render json: { message: "Error", data: @book.errors.full_messages }, status: :unprocessable_entity
+      default_response @book.errors, "Error", :unprocessable_entity
     end
   end
 
   def destroy 
     @book.destroy 
 
-    render json: { message: "Success" }, status: :ok
+    default_response nil, "Success", :ok
   end
 
   private 
@@ -39,7 +41,7 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find_by_id(params[:id])
 
-    render json: { message: "Not Found" }, status: :not_found if @book.nil?
+    default_response nil, "Not found", :not_found if @book.nil?
   end
 
   def book_params

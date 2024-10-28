@@ -14,6 +14,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "bootsnap", require: false
 
+gem 'kaminari'
+
 gem "rack-cors"
 gem 'rack-attack'
 

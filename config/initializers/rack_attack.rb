@@ -1,6 +1,6 @@
 class Rack::Attack
 
-  if ENV.fetch("RAILS_ENV") == "production"
+  if ENV["RAILS_ENV"] == "production"
     self.cache.store = ActiveSupport::Cache::MemoryStore.new
   end
   
