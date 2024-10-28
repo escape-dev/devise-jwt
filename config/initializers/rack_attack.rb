@@ -1,7 +1,9 @@
 class Rack::Attack
 
-  self.cache.store = ActiveSupport::Cache::MemoryStore.new
-
+  if ENV.fetch("RAILS_ENV") == "production"
+    self.cache.store = ActiveSupport::Cache::MemoryStore.new
+  end
+  
   throttle('default protector', limit: 300, period: 5.minutes) do |req|
     req.ip 
   end
