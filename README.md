@@ -1,1 +1,5 @@
-# Devise JWT, Rate Limiter, Kaminari Pagination and Can Can Can Authorizations
+# Explore 
+
+1. Devise JWT
+2. Kaminari Pagination
+3. Rack Attack 
