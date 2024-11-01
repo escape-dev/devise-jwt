@@ -1,4 +1,4 @@
-# Explore 
+# Explore Rails API
 
 1. Devise JWT
 2. Kaminari Pagination
