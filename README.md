@@ -2,4 +2,4 @@
 
 1. Devise JWT
 2. Kaminari Pagination
-3. Rack Attack 
+3. Rack Attack (rails rate limiter)
