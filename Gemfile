@@ -14,13 +14,13 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "bootsnap", require: false
 
-gem 'kaminari'
+gem "kaminari"
 
 gem "rack-cors"
-gem 'rack-attack'
+gem "rack-attack"
 
-gem 'devise'
-gem 'devise-jwt'
+gem "devise"
+gem "devise-jwt"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
@@ -28,6 +28,8 @@ end
 
 group :development do
   gem "pry"
-  gem "dotenv-rails"
-end
 
+  gem "dotenv-rails"
+
+  gem "rubocop-rails-omakase", require: false
+end
