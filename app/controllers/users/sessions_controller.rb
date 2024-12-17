@@ -3,13 +3,13 @@ class Users::SessionsController < Devise::SessionsController
 
   respond_to :json
 
-  private 
+  private
 
   def respond_with(resource, _opts = {})
-    render json: { 
-      message: "OK", 
+    render json: {
+      message: "OK",
       data: {
-        token: request.env['warden-jwt_auth.token'],
+        token: request.env["warden-jwt_auth.token"],
         expired_at: Time.now + 30.minutes
       }
     }
@@ -24,5 +24,4 @@ class Users::SessionsController < Devise::SessionsController
       render json: { message: "Error", data: "Invalid Email or Password" }, status: :unauthorized
     end
   end
-
 end

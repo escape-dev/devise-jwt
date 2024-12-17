@@ -2,13 +2,13 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_book, only: %i[ show update destroy ]
 
-  def index 
+  def index
     @books = Book.page(params[:page].to_i)
 
     paginate_response @books, "Success", :ok
   end
 
-  def create 
+  def create
     @book = Book.new(book_params)
 
     if @book.save!
@@ -18,11 +18,11 @@ class BooksController < ApplicationController
     end
   end
 
-  def show 
+  def show
     default_response @book, "Success", :ok
   end
-  
-  def update 
+
+  def update
     if @book.update(book_params)
       default_response nil, "Success", :ok
     else
@@ -30,13 +30,13 @@ class BooksController < ApplicationController
     end
   end
 
-  def destroy 
-    @book.destroy 
+  def destroy
+    @book.destroy
 
     default_response nil, "Success", :ok
   end
 
-  private 
+  private
 
   def set_book
     @book = Book.find_by_id(params[:id])
